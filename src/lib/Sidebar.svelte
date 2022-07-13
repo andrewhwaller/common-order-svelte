@@ -1,16 +1,11 @@
 <script lang="ts">
-	interface Link {
-		name: string;
-		href: string;
-		icon: string;
-	}
-	import { Icon } from '@steeze-ui/svelte-icon';
+	import {Icon, IconThemeSource} from '@steeze-ui/svelte-icon';
 	import { Bookmark, BookOpen } from '@steeze-ui/heroicons';
 	import NavLink from './NavLink.svelte';
-	const navItems: Array<Link> = [
+	const navItems: ({ name: string; icon: { default: IconThemeSource } & { [p: string]: IconThemeSource }; href: string })[] = [
 		{
 			name: 'Library',
-			href: '/library',
+			href: '/',
 			icon: Bookmark
 		},
 		{
@@ -21,9 +16,9 @@
 	];
 </script>
 
-<div class="hidden md:flex md:flex-shrink-0">
+<div class="hidden md:flex md:flex-shrink-0 bg-gray-50">
 	<div class="flex flex-col w-50">
-		<div class="flex flex-col h-0 flex-1 border-r border-gray-200 bg-white">
+		<div class="flex flex-col h-0 flex-1 border-r border-gray-200">
 			<div class="flex items-center flex-shrink-0 py-4 pl-2 pr-4">
 				<svg
 					class="my-auto h-16 w-16 text-red-700 stroke-current fill-current"
@@ -39,29 +34,25 @@
 				>
 				<div class="flex flex-col mt-1">
 					<span
-						style="font-family: Lusitana;"
-						class="text-3xl tracking-tight text-slate-700 font-bold leading-6">Common</span
+						class="text-3xl tracking-tight text-slate-700 font-bold leading-6 font-display">Common</span
 					>
 					<span
-						style="font-family: Lusitana;"
-						class="text-3xl tracking-tight text-slate-700 font-bold leading-6 mt-0.5">Order</span
+						class="text-3xl tracking-tight text-slate-700 font-bold leading-6 mt-0.5 font-display">Order</span
 					>
 				</div>
 			</div>
 			<div class="flex-1 flex flex-col overflow-y-auto">
-				<nav class="flex-1 px-2 py-4 space-y-8 bg-white">
-					<div class="">
-						{#each navItems as item}
-							<NavLink label={item.name} href={item.href}>
-								<Icon
-									slot="icon"
-									src={item.icon}
-									theme="outline"
-									class="text-blue-500 block h-4 w-4 mr-2"
-								/>
-							</NavLink>
-						{/each}
-					</div>
+				<nav class="flex-1 px-2 py-4">
+					{#each navItems as item}
+						<NavLink label={item.name} href={item.href}>
+							<Icon
+								slot="icon"
+								src={item.icon}
+								theme="outline"
+								class="text-blue-500 block h-4 w-4 mr-2"
+							/>
+						</NavLink>
+					{/each}
 				</nav>
 			</div>
 		</div>
