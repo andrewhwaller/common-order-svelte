@@ -1,11 +1,11 @@
 <script lang="ts">
 	import '../app.css';
-	import Navbar from '../components/Navbar.svelte';
+	import Sidebar from '$lib/Sidebar.svelte';
 </script>
 
 <div>
 	<div class="h-screen flex overflow-hidden bg-white">
-		<Navbar />
+		<Sidebar />
 		<div class="flex flex-col w-0 flex-1 h-full overflow-hidden">
 			<main id="main" class="flex-1 relative overflow-y-auto focus:outline-none">
 				<h1>Common Order</h1>
