@@ -1,5 +1,6 @@
 <script lang="ts">
-	import {Icon, IconThemeSource} from '@steeze-ui/svelte-icon';
+	import {Icon} from '@steeze-ui/svelte-icon';
+	import type {IconThemeSource} from '@steeze-ui/svelte-icon';
 	import { Bookmark, BookOpen } from '@steeze-ui/heroicons';
 	import NavLink from './NavLink.svelte';
 	const navItems: ({ name: string; icon: { default: IconThemeSource } & { [p: string]: IconThemeSource }; href: string })[] = [
